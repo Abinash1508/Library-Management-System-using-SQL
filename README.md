@@ -177,38 +177,44 @@ VALUES
 
  ## Project task
 
- -- Task 1. Create a New Book Record -- "978-1-60129-456-2', 'To Kill a Mockingbird', 'Classic', 6.00, 'yes', 'Harper Lee', 'J.B. Lippincott & Co.')"
-
+### Task 1. Create a New Book Record -- "978-1-60129-456-2', 'To Kill a Mockingbird', 'Classic', 6.00, 'yes', 'Harper Lee', 'J.B. Lippincott & Co.')"
+```sql
 insert into books(isbn, book_title,category,rental_price,status,author,publisher)
 values
 ( '978-1-60129-456-2', 'To Kill a Mockingbird', 'Classic', 6.00, 'yes', 'Harper Lee', 'J.B. Lippincott & Co.');
 
 select * from books
-
--- Task 2: Update an Existing Member's Address
+```
+### Task 2: Update an Existing Member's Address
+```sql
 UPDATE members
 SET member_address = '125 Oak St'
 WHERE member_id = 'C103';
+```
 
--- Task 3: Delete a Record from the Issued Status Table -- Objective: Delete the record with issued_id = 'IS121' from the issued_status table.
+### Task 3: Delete a Record from the Issued Status Table -- Objective: Delete the record with issued_id = 'IS121' from the issued_status table.
+```sql
 DELETE FROM issued_status
 WHERE   issued_id =   'IS121';
+```
 
--- Task 4: Retrieve All Books Issued by a Specific Employee -- Objective: Select all books issued by the employee with emp_id = 'E101'.
+### Task 4: Retrieve All Books Issued by a Specific Employee -- Objective: Select all books issued by the employee with emp_id = 'E101'.
+```sql
 SELECT * FROM issued_status
 WHERE issued_emp_id = 'E101'
-
---Task 5: List Members Who Have Issued More Than One Book -- Objective: Use GROUP BY to find members who have issued more than one book.
+```
+### Task 5: List Members Who Have Issued More Than One Book -- Objective: Use GROUP BY to find members who have issued more than one book.
+```sql
 Select
 	issued_emp_id,
 	count(issued_id) as total_book_issued
 	from issued_status
 	group by issued_emp_id
 	having count(issued_id) >1
-
---CTAS
---Task 6: Create Summary Tables: Used CTAS to generate new tables based on query results - each book and total book_issued_cnt**
-
+```
+## CTAS
+### Task 6: Create Summary Tables: Used CTAS to generate new tables based on query results - each book and total book_issued_cnt**
+```sql
 Select b.isbn, b.book_title, count(ist.issued_id) as issue_count 
 from books as b
 join issued_status as ist
@@ -231,12 +237,14 @@ JOIN books AS b
 GROUP BY b.isbn, b.book_title;
 
 Select * from book_issued_cnt
-
--- Task 7. Retrieve All Books in a Specific Category
+```
+### Task 7. Retrieve All Books in a Specific Category
+```sql
 Select * from books
 where category='Classic';
-
--- Task 8: Find Total Rental Income by Category
+```
+### Task 8: Find Total Rental Income by Category
+```sql
 Select
 	b.category,
 	sum(b.rental_price) as total_rental_income,
@@ -245,8 +253,9 @@ from books as b
 join issued_status as ist
 on b.isbn=ist.issued_book_isbn
 group by b.category
-
--- Task 9:List Members Who Registered in the Last 180 Days
+```
+### Task 9:List Members Who Registered in the Last 180 Days
+```sql
 SELECT *
 FROM members
 WHERE reg_date >= DATEADD(DAY, -180, CAST(GETDATE() AS DATE));
@@ -260,8 +269,9 @@ WHERE reg_date >= DATEADD(DAY, -180, CAST(GETDATE() AS DATE));
  values
 	('C120','Abinash','846 Elm Avenue','2025-11-11'),
 	('C121','Swapnil','848 Richard Avenue','2025-11-15');
-
--- Task 10:List Employees with Their Branch Manager's Name and their branch details:
+```
+### Task 10:List Employees with Their Branch Manager's Name and their branch details:
+ ```sql
  Select * from branch;
  Select * from employees;
 
@@ -279,16 +289,18 @@ on b.branch_id=e1.branch_id
 join 
 employees as e2
 on b.manager_id=e2.emp_id
-
---Task 11. Create a Table of Books with Rental Price Above a Certain Threshold
+```
+### Task 11. Create a Table of Books with Rental Price Above a Certain Threshold
+```sql
 Select * from books;
 Select max(rental_price)
 from books
 
 Select * from books
 where rental_price> 7.00;
-
---Task 12: Retrieve the List of Books Not Yet Returned
+```
+### Task 12: Retrieve the List of Books Not Yet Returned
+```sql
 Select * from issued_status
 Select * from return_status
 
@@ -299,13 +311,13 @@ left join
 return_status as rs
 on rs.issued_id=ist.issued_id
 where rs.return_id is null;
+```
+### Task 13:
+### Identify Members with Overdue Books
+### Write a query to identify members who have overdue books (assume a 30-day return period). 
+### Display the member's_id, member's name, book title, issue date, and days overdue.
 
-/*Task 13:
-Identify Members with Overdue Books
-Write a query to identify members who have overdue books (assume a 30-day return period). 
-Display the member's_id, member's name, book title, issue date, and days overdue.
-*/
-
+```sql
 Select CAST(getdate() as date);
 Select
 	ist.issued_member_id,
@@ -328,7 +340,7 @@ where
 	rs.return_date is null
 	and
 	datediff(day,ist.issued_date,cast(getdate() as date))>30
-
+```
 
 ## Description: Write a CTAS query to create a new table that lists each member and the books they have issued but not returned within 30 days. The table should include: The number of overdue books. The total fines, with each day's fine calculated at $0.50. The number of books issued by each member. The resulting table should show: Member ID Number of overdue books Total fines
 
@@ -336,8 +348,5 @@ where
 Database Schema: Detailed table structures and relationships.
 Data Analysis: Insights into book categories, employee salaries, member registration trends, and issued books.
 ## Summary Reports: Aggregated data on high-demand books and employee performance.
-Conclusion
+## Conclusion
 This project demonstrates the application of SQL skills in creating and managing a library management system. It includes database setup, data manipulation, and advanced querying, providing a solid foundation for data management and analysis.
-LinkedIn: Connect with me professionally
-Discord: Join our community for learning and collaboration
-Thank you for your interest in this project!
