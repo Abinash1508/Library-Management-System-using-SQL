@@ -313,9 +313,7 @@ on rs.issued_id=ist.issued_id
 where rs.return_id is null;
 ```
 ### Task 13:
-### Identify Members with Overdue Books
-### Write a query to identify members who have overdue books (assume a 30-day return period). 
-### Display the member's_id, member's name, book title, issue date, and days overdue.
+#### Identify Members with Overdue Books.Write a query to identify members who have overdue books (assume a 30-day return period).Display the member's_id, member's name, book title, issue date, and days overdue.
 
 ```sql
 Select CAST(getdate() as date);
