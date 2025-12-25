@@ -1,5 +1,5 @@
 # Library-Management-System-using-SQL
-Project Title: Library Management System
+## Project Title: Library Management System
 Level: Intermediate
 Database: library_db
 
@@ -7,7 +7,7 @@ This project demonstrates the implementation of a Library Management System usin
 
 Library_project
 
-Objectives
+## Objectives
 Set up the Library Management System Database: Create and populate the database with tables for branches, employees, members, books, issued status, and return status.
 CRUD Operations: Perform Create, Read, Update, and Delete operations on the data.
 CTAS (Create Table As Select): Utilize CTAS to create new tables based on query results.
@@ -16,10 +16,10 @@ Project Structure
 1. Database Setup
 ERD
 
-Database Creation: Created a database named library_db.
---Library Managment System Project 2
+## Database Creation: Created a database named library_db.
 
-create database library_project2;
+Library Managment System Project 2
+-- create database library_project2;
 
 -- creating branch table
 drop table if exists branch
@@ -329,24 +329,12 @@ where
 	datediff(day,ist.issued_date,cast(getdate() as date))>30
 
 
+## Description: Write a CTAS query to create a new table that lists each member and the books they have issued but not returned within 30 days. The table should include: The number of overdue books. The total fines, with each day's fine calculated at $0.50. The number of books issued by each member. The resulting table should show: Member ID Number of overdue books Total fines
 
-
-
-
-
-
-
-
-
-
-
-
-Description: Write a CTAS query to create a new table that lists each member and the books they have issued but not returned within 30 days. The table should include: The number of overdue books. The total fines, with each day's fine calculated at $0.50. The number of books issued by each member. The resulting table should show: Member ID Number of overdue books Total fines
-
-Reports
+## Reports
 Database Schema: Detailed table structures and relationships.
 Data Analysis: Insights into book categories, employee salaries, member registration trends, and issued books.
-Summary Reports: Aggregated data on high-demand books and employee performance.
+## Summary Reports: Aggregated data on high-demand books and employee performance.
 Conclusion
 This project demonstrates the application of SQL skills in creating and managing a library management system. It includes database setup, data manipulation, and advanced querying, providing a solid foundation for data management and analysis.
 LinkedIn: Connect with me professionally
