@@ -22,13 +22,14 @@ Project Structure
 1. Database Setup
 ERD
 
-## Database Creation: Created a database named library_db.
+## Database Creation: Created a database named library_project2.
 
 Library Managment System Project 2
 ```sql
--- create database library_project2;
-
+create database library_project2;
+```
 -- creating branch table
+```sql
 drop table if exists branch
 create table branch
 	(
