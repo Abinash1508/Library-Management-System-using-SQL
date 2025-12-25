@@ -313,7 +313,7 @@ on rs.issued_id=ist.issued_id
 where rs.return_id is null;
 ```
 ### Task 13:
-#### Identify Members with Overdue Books.Write a query to identify members who have overdue books (assume a 30-day return period).Display the member's_id, member's name, book title, issue date, and days overdue.
+#### Identify Members with Overdue Books. Write a query to identify members who have overdue books (assume a 30-day return period). Display the member's_id, member's name, book title, issue date, and days overdue.
 
 ```sql
 Select CAST(getdate() as date);
@@ -339,12 +339,10 @@ where
 	and
 	datediff(day,ist.issued_date,cast(getdate() as date))>30
 ```
-
-## Description: Write a CTAS query to create a new table that lists each member and the books they have issued but not returned within 30 days. The table should include: The number of overdue books. The total fines, with each day's fine calculated at $0.50. The number of books issued by each member. The resulting table should show: Member ID Number of overdue books Total fines
-
 ## Reports
 Database Schema: Detailed table structures and relationships.
 Data Analysis: Insights into book categories, employee salaries, member registration trends, and issued books.
-## Summary Reports: Aggregated data on high-demand books and employee performance.
+## Summary Reports: 
+Aggregated data on high-demand books and employee performance.
 ## Conclusion
 This project demonstrates the application of SQL skills in creating and managing a library management system. It includes database setup, data manipulation, and advanced querying, providing a solid foundation for data management and analysis.
