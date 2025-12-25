@@ -19,6 +19,7 @@ ERD
 ## Database Creation: Created a database named library_db.
 
 Library Managment System Project 2
+```sql
 -- create database library_project2;
 
 -- creating branch table
@@ -171,10 +172,10 @@ VALUES
  Select * from issued_status;
  Select * from return_status;
 
+```
 
 
-
- -- Project task
+ ## Project task
 
  -- Task 1. Create a New Book Record -- "978-1-60129-456-2', 'To Kill a Mockingbird', 'Classic', 6.00, 'yes', 'Harper Lee', 'J.B. Lippincott & Co.')"
 
